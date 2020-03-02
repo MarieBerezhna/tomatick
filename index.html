@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Tomatick</title>
+</head>
+<nav class="navbar navbar-dark text-light bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="./media/preload.gif" width="30" height="30" class="d-inline-block align-top" alt="">
+    <span class="pl-5">Tomatick</span>
+  </a>
+</nav>
+<div class="container my-5 text-light" id="main">
+    <div class="row">
+        <div class="block col-md-7 my-3 py-4 mx-auto bg-dark border border-dark rounded">
+            <div id="timer">
+                <div class="time-box">
+                    <span id="min">00</span>:<span id="sec">00</span>
+                </div>
+                <div class="btn-box">
+                    <div data-id="timeblock" class="col-5 m-3 trigger btn btn-warning">Start Block</div>
+                    <div data-id="shortbreak" class="col-5 m-3 trigger btn btn-info">Short Break</div>
+                    <div data-id="longbreak" class="col-5 m-3 trigger btn btn-primary">Long Break</div>
+                    <div data-id="stop" class="col-5 m-3 trigger btn btn-danger">Stop Timer</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="block col-md-4 bg-dark my-3 py-4 mx-auto border border-dark rounded">
+            <form action="#" class="row">
+                <div class="form-group timevalues col-10 mx-auto my-5">
+                    <h3>Duration in minutes</h3>
+                    <label for="timeblock">
+                        Time Block
+                        <input name="timeblock" id="timeblock" type="number" min="0" max="60" value="25" class="border border-danger"> 
+                    </label>
+                    <label for="shortbreak">
+                        Short Break
+                        <input name="shortbreak" id="shortbreak" type="number" min="0" max="60" value="5" class="border border-danger">
+                    </label>
+                    <label for="longbreak">
+                        Long Break
+                        <input name="longbreak" id="longbreak" type="number" min="0" max="60" value="15" class="border border-danger">
+                    </label>
+                </div>
+                <div class="form-group finish-opts col-10 mx-auto my-5">
+                    <h3>In the end</h3>
+                    <div class="box my-2">
+                        <label for="break" class="border border-danger my-1 p-1">
+                            <input name="break" id="break" type="checkbox" min="0" max="60" class="border border-danger">
+                            <img src="./media/preload.gif" class="tomato">
+                        </label>
+                        <span>Start short break after block</span>
+                        
+                    </div>
+                    <div class="box my-2">
+                        <label for="msg" class="border border-danger my-1 p-1">
+                            <input name="msg" id="msg" type="checkbox" min="0" max="60" class="border border-danger">
+                            <img src="./media/preload.gif" class="tomato">  
+                        </label> 
+                        <span>Show message</span>
+                        
+                    </div>
+                    <div class="box my-2">
+                        <label for="beep" class="border border-danger my-1 p-1">
+                            <input name="beep" id="beep" type="checkbox" min="0" max="60" class="border border-danger">
+                            <img src="./media/preload.gif" class="tomato">
+                        </label>  
+                        <span>Play sound</span>
+                        
+                    </div>
+                    
+                                        
+                   
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<audio id="beep-sound">
+    <source src="./media/beep.wav" type="audio/wav">
+</audio>
+<body>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="./timer.js"></script>
+</body>
+</html>

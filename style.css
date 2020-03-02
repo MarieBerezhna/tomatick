@@ -1,0 +1,84 @@
+@media screen and (min-width: 993px) { 
+    body::before {
+        background: url("./media/tomatoes.jpg");
+        background-size: 100%;
+    }
+    .block {
+        min-height: 450px;
+    }
+    #timer {
+        min-height: 400px;
+
+    }
+    .time-box {
+        line-height: 300px;
+        font-size: 250px;
+    }
+}
+@media screen and (max-width: 992px) {
+    body::before {
+        background: url("./media/tomatoes-mobile.jpg");
+        background-size: 150%;
+    }
+    #timer {
+        line-height: 100px;
+        font-size: 100px;
+    }
+    
+}
+body::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 120vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+.block {
+    opacity: 0.9;
+}
+#timer {
+    text-align: center;
+}
+.timevalues label {
+    width: 100%;
+}
+.timevalues input { 
+    background-color: transparent;
+    color: white;
+    width: 20%;
+    float: right;
+}
+
+.box ,.box label {
+    position: relative;
+}
+.box label, 
+.box .tomato {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.box .tomato {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.box .checked {
+    visibility: visible;
+}
+.box input {
+    width: 0;
+    height: 0;
+}
+.box span {
+    position: absolute;
+    left: 50px;
+    top:5px;
+}
