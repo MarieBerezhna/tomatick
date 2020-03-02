@@ -80,7 +80,6 @@ class Timer {
         });
         $(".finish-opts input").on("change", (e) => {
             timeBox.clearOpts();
-            let opts = [];
             $(".finish-opts input:checked").each((el) => {
                 let item = $(".finish-opts input:checked")[el];
                 let val = $(item).attr("id");
@@ -92,6 +91,7 @@ class Timer {
     }
     finish (mode) {
         this.clear();
+
         if ($.inArray("beep", timeBox.opts) !== -1) {
             let beep = $("#beep-sound")[0];
             beep.play();
@@ -110,7 +110,7 @@ class Timer {
 }
 const timeBox = {
     mode: "unset",
-    opts: [],
+    opts: ["beep"],
     setMode: (mode) => {
         this.mode = mode;
     },

@@ -45,6 +45,10 @@ body::before {
 #timer {
     text-align: center;
 }
+
+h3 {
+    margin: 25px 0;
+}
 .timevalues label {
     width: 100%;
 }
@@ -55,8 +59,12 @@ body::before {
     float: right;
 }
 
-.box ,.box label {
+.box ,
+.box label {
     position: relative;
+}
+.box label {
+    cursor: pointer;
 }
 .box label, 
 .box .tomato {
