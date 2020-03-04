@@ -65,7 +65,13 @@ class Timer {
     }
     updateValues () {
         $(".timevalues input").on("change", (e) => {
-            $(e.target).attr("value", $(e.target).val());
+            if ($(e.target).val() < 1) {
+                let block = $(e.target).parent().text();
+                this.showMessage("Heeeey! " + block + " can't be less than a minute!");
+            } else {
+                $(e.target).attr("value", $(e.target).val());
+            }
+            
         });
         $(".finish-opts label").on("click", function (e) {
             if (e.target.tagName !== "INPUT") {
@@ -89,6 +95,10 @@ class Timer {
           
         });
     }
+    showMessage(message) {
+        $(".modal-msg").text(message);
+        $("#msg-trigger").trigger("click");
+    }
     finish (mode) {
         this.clear();
 
@@ -104,9 +114,7 @@ class Timer {
             if (shortBreakNeeded) {
                 message += " Short break started";
             }
-            $(".modal-msg").text(message);
-            $("#msg-trigger").trigger("click");
-            console.log(message);
+            this.showMessage(message);
         }
         if (shortBreakNeeded) {
             $("div[data-id='short_break']").trigger("click");
