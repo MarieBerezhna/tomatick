@@ -15,19 +15,18 @@ class Timer {
     triggerClock () {
         $(".trigger").on("click", (e) => {
             let id = $(e.target).attr("data-id");
-            let name = $(e.target).text();
+            let name = $(e.target).text().replace("Start", "").toLowerCase();
 
             let timerStart = () => {
                 let inputId = id.replace("_", "");
                 let timeVal = parseInt($("#" + inputId).val()); 
-                timeVal = timeVal !== 1? timeVal - 1 : "0";
                 timeBox.setMode(id);
                 if (timeVal < 1 ) {
-                    this.showMessage("The duration value of " + name + " is wrong. Please check the settings");
+                    this.showMessage("The duration value of the " + name + " is wrong. Please check the settings");
                 }else if ( $.inArray("break", timeBox.opts) && $("#shortbreak").val() < 1) {
                     this.showMessage("Proceeding to Short Break is set, but its duration is wrong. Please check the settings.");
                 } else {
-                    timeBox.setClock(timeVal, 59);
+                    timeBox.setClock(timeVal - 1, 59);
                     this.timerGo();
                 }
             };
