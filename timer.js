@@ -23,7 +23,8 @@ class Timer {
                 timeBox.setMode(id);
                 if (timeVal < 1 ) {
                     this.showMessage("The duration value of the " + name + " is wrong. Please check the settings");
-                }else if ( $.inArray("break", timeBox.opts) && $("#shortbreak").val() < 1) {
+                }else if ( $.inArray("break", timeBox.opts) && $("#shortbreak").val() < 1 && name.indexOf("Long") === -1) {
+                    
                     this.showMessage("Proceeding to Short Break is set, but its duration is wrong. Please check the settings.");
                 } else {
                     timeBox.setClock(timeVal - 1, 59);
