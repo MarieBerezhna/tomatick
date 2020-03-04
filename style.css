@@ -22,6 +22,9 @@ a:hover {
         background: url("./media/tomatoes.jpg");
         background-size: 100%;
     }
+    #main {
+        height: calc(85vh - 56px);
+    }
     .block {
         min-height: 450px;
     }
@@ -87,9 +90,7 @@ body::before {
 h3 {
     margin: 25px 0;
 }
-#main {
-    height: calc(85vh - 56px);
-}
+
 .timevalues label {
     width: 100%;
 }

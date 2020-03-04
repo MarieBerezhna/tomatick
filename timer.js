@@ -112,7 +112,7 @@ class Timer {
             $("div[data-id='short_break']").trigger("click");
             setTimeout(()=> {
                 $("#modal-close").trigger("click");
-            }, 2000);
+            }, 10000);
         }
     }
     showInfo () {
