@@ -8,31 +8,36 @@
     <link rel="stylesheet" href="style.css">
     <title>Tomatick</title>
 </head>
+<body>
 <nav class="navbar navbar-dark text-light bg-dark">
   <a class="navbar-brand" href="#">
     <img src="./media/preload.gif" width="30" height="30" class="d-inline-block align-top" alt="">
     <span class="pl-5">Tomatick</span>
   </a>
 </nav>
-<div class="container my-5 text-light" id="main">
-    <div class="row">
-        <div class="block col-md-7 my-3 py-4 mx-auto bg-dark border border-dark rounded">
+
+<div class="container my-1 text-light" id="main">
+    <button id="msg-trigger" type="button" class="fade" data-toggle="modal" data-target="#message">
+    </button>
+    <div class="row py-3">
+        <div class="block col-md-7 mx-auto py-3 bg-dark border border-dark rounded">
             <div id="timer">
                 <div class="time-box">
                     <span id="min">00</span>:<span id="sec">00</span>
                 </div>
                 <div class="btn-box">
-                    <div data-id="timeblock" class="col-5 m-3 trigger btn btn-warning">Start Block</div>
-                    <div data-id="shortbreak" class="col-5 m-3 trigger btn btn-info">Short Break</div>
-                    <div data-id="longbreak" class="col-5 m-3 trigger btn btn-primary">Long Break</div>
-                    <div data-id="stop" class="col-5 m-3 trigger btn btn-danger">Stop Timer</div>
+                    <div data-id="time_block" class="col-4 col-md-5 m-1 trigger btn btn-warning">Start Block</div>
+                    <div data-id="short_break" class="col-4 col-md-5 m-1 trigger btn btn-info">Short Break</div>
+                    <div data-id="long_break" class="col-4 col-md-5 m-1 trigger btn btn-primary">Long Break</div>
+                    <div data-id="stop" class="col-4 col-md-5 m-1 trigger btn btn-danger">Stop Timer</div>
                 </div>
+                <img src="./media/info-icon.png" alt="info" class="info-trigger my-2">
 
             </div>
         </div>
-        <div class="block col-md-4 bg-dark my-3 py-4 mx-auto border border-dark rounded">
+        <div class="block col-md-4 bg-dark mx-auto border border-dark rounded">
             <form action="#" class="row">
-                <div class="form-group timevalues col-10 mx-auto my-5">
+                <div class="form-group timevalues col-10 mx-auto">
                     <h3>Duration in minutes</h3>
                     <label for="timeblock">
                         Time Block
@@ -47,35 +52,35 @@
                         <input name="longbreak" id="longbreak" type="number" min="0" max="60" value="15" class="border border-danger">
                     </label>
                 </div>
-                <div class="form-group finish-opts col-10 mx-auto mb-5">
+
+                <div class="form-group finish-opts col-10 mx-auto">
                     <h3>In the end</h3>
-                    <div class="box my-2">
-                        <label for="break" class="border border-danger my-1 p-1">
+                    <button id="msg-trigger" type="button" class="fade" data-toggle="modal" data-target="#message">
+                    </button>
+                    <div class="box my-3">
+                        <label for="break" class="border border-danger">
                             <input name="break" id="break" type="checkbox" min="0" max="60">
                             <img src="./media/preload.gif" class="tomato">
                         </label>
                         <span>Start short break after block</span>
                         
                     </div>
-                    <div class="box my-2">
-                        <label for="msg" class="border border-danger my-1 p-1">
+                    <div class="box my-3">
+                        <label for="msg" class="border border-danger">
                             <input name="msg" id="msg" type="checkbox" min="0" max="60">
                             <img src="./media/preload.gif" class="tomato">  
                         </label> 
                         <span>Show message</span>
                         
                     </div>
-                    <div class="box my-2">
-                        <label for="beep" class="my-1 p-1 checked">
-                            <input name="beep" id="beep" type="checkbox" min="0" max="60" class="checked">
-                            <img src="./media/preload.gif" class="tomato checked">
+                    <div class="box my-3">
+                        <label for="beep" class="border border-danger">
+                            <input name="beep" id="beep" type="checkbox" min="0" max="60">
+                            <img src="./media/preload.gif" class="tomato">
                         </label>  
                         <span>Play sound</span>
                         
                     </div>
-                    
-                                        
-                   
                 </div>
             </form>
         </div>
@@ -85,7 +90,45 @@
 <audio id="beep-sound">
     <source src="./media/beep.wav" type="audio/wav">
 </audio>
-<body>
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="messageLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="messageLabel">Tomatick</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img src='./media/info.jpg' class='info-img'>
+          <h1 class="modal-msg">
+          </h1>
+          <img class="tomatick-img" src="./media/preload.gif" alt="">
+        </div>
+        <div class="modal-footer">
+          <button id="modal-close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer class="page-footer font-small bg-dark text-light">
+
+    <!-- Copyright -->
+    
+    <div class="footer-copyright text-center py-3">
+        <a href="https://Webmarie.co.il/"> Webmarie  </a>  © 2020
+      
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

@@ -1,4 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Simonetta&display=swap');
+* {
+    font-family: "Simonetta";
+}
+form {
+    font-size: 1.2rem;
+}
+a {
+    color: #fff;
+  
+}
+a:hover {
+    color: wheat;
+    text-decoration: none;
+}
 @media screen and (min-width: 993px) { 
+    body {
+        padding: 0 !important;
+        overflow-x: hidden;
+    }
     body::before {
         background: url("./media/tomatoes.jpg");
         background-size: 100%;
@@ -7,7 +26,7 @@
         min-height: 450px;
     }
     #timer {
-        min-height: 400px;
+        min-height: 300px;
 
     }
     .time-box {
@@ -18,25 +37,36 @@
 @media screen and (max-width: 992px) {
     body::before {
         background: url("./media/tomatoes-mobile.jpg");
-        background-size: 150%;
+        background-size: 100%;
+        background-position: center;
+    }
+    .block:last-child {
+        margin-top: 50px;
     }
     #timer {
         line-height: 100px;
         font-size: 100px;
     }
+    .btn-box div {
+        padding: 20px;
+    }
     
 }
+
 body::before {
     content: ' ';
     display: block;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
+    bottom: 0;
     width: 100%;
-    height: 120vh;
+    height: 100vh;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    opacity: 0.7;
+
+    opacity: 0.8;
+    z-index: -1;
 }
 
 .block {
@@ -45,7 +75,15 @@ body::before {
 #timer {
     text-align: center;
 }
-
+.time-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.time-box span {
+    width: 50%;
+}
 h3 {
     margin: 25px 0;
 }
@@ -57,6 +95,7 @@ h3 {
     color: white;
     width: 20%;
     float: right;
+    padding-left: 10px;
 }
 
 .box ,
@@ -77,6 +116,9 @@ h3 {
     position: absolute;
     top: 0;
     left: 0;
+    width: 24px;
+    height: 24px;
+
 }
 .box .checked {
     visibility: visible;
@@ -88,5 +130,21 @@ h3 {
 .box span {
     position: absolute;
     left: 50px;
-    top:5px;
+    top:0;
+}
+.modal-dialog {
+    margin-top: 10rem;
+}
+.modal-content {
+    text-align: center;
+}
+.info-img {
+    width: 100%;
+    display: none;
+}
+footer {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }

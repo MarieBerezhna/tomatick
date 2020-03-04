@@ -1,4 +1,5 @@
 class Timer {
+
     getIntId () {
         let intId = setInterval(()=> {
             this.updateClock();
@@ -14,12 +15,14 @@ class Timer {
     triggerClock () {
         $(".trigger").on("click", (e) => {
             let id = $(e.target).attr("data-id");
+
             let timerStart = () => {
-                let timeVal = parseInt( $("#" + id).val() ); 
+                let inputId = id.replace("_", "");
+                let timeVal = parseInt($("#" + inputId).val()); 
                 timeVal = timeVal !== 1? timeVal - 1 : "0";
                 // timeBox.setClock(timeVal, 59);
+
                 timeBox.setMode(id);
-                console.log(timeBox.getMode());
                 timeBox.setClock(timeVal, 3); //test
                 this.timerGo();
             };
@@ -84,7 +87,6 @@ class Timer {
                 let item = $(".finish-opts input:checked")[el];
                 let val = $(item).attr("id");
                 timeBox.addOpt(val);
-                console.log(val);
             });
           
         });
@@ -92,29 +94,65 @@ class Timer {
     finish (mode) {
         this.clear();
 
+        let shortBreakNeeded = ($.inArray("break", timeBox.opts) !== -1 && mode === "time_block") ? true : false;
         if ($.inArray("beep", timeBox.opts) !== -1) {
             let beep = $("#beep-sound")[0];
             beep.play();
         }
         if ($.inArray("msg", timeBox.opts) !== -1) {
-            console.log("mesg");
+            if (mode.indexOf("_") === -1) return;
+            let message = "The " + mode.replace("_", " ") + " ended.";
+
+            if (shortBreakNeeded) {
+                message += " Short break started";
+            }
+            $(".modal-msg").text(message);
+            $("#msg-trigger").trigger("click");
+            console.log(message);
         }
-        if ($.inArray("break", timeBox.opts) !== -1 && mode === "timeblock") {
-            $("div[data-id='shortbreak']").trigger("click");
+        if (shortBreakNeeded) {
+            $("div[data-id='short_break']").trigger("click");
+            setTimeout(()=> {
+                $("#modal-close").trigger("click");
+            }, 2000);
         }
+    }
+    showInfo () {
+        $(".info-trigger").on("click", ()=> {
+   
+            $(".info-img").show();
+            $(".modal-body h1").text("");
+            $("#msg-trigger").trigger("click");
+            $(".modal-dialog").animate({
+                marginTop:"3rem",
+                maxWidth: "1000px"
+            }, 800);
+
+            $(".modal-backdrop, #modal-close").on("click", ()=> {
+                $(".tomatick-img").show();
+                $(".info-img").hide();
+                $(".modal-dialog").css({
+                    marginTop: "10rem",
+                    maxWidth: "500px"
+                });
+            });
+        });
     }
     init () {
         this.updateValues();
         this.triggerClock();
+        this.showInfo();
     }
 }
 const timeBox = {
     mode: "unset",
-    opts: ["beep"],
+    opts: [],
     setMode: (mode) => {
+        console.log(mode);
         this.mode = mode;
     },
     getMode: () => {
+
         return this.mode;
     },
     getOpts: () => {
@@ -135,3 +173,6 @@ const timeBox = {
     }
 };
 new Timer().init();
+$(document).ready(()=> {
+    $("label[for='beep']").trigger("click");
+});
