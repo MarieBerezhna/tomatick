@@ -24,7 +24,7 @@ class Timer {
                 if (timeVal < 1 ) {
                     this.showMessage("The duration value of the " + name + " is wrong. Please check the settings");
                 }else if ( $.inArray("break", timeBox.opts) && $("#shortbreak").val() < 1 && name.indexOf("Long") === -1) {
-                    
+
                     this.showMessage("Proceeding to Short Break is set, but its duration is wrong. Please check the settings.");
                 } else {
                     timeBox.setClock(timeVal - 1, 59);
@@ -75,7 +75,7 @@ class Timer {
             if ($(e.target).val() < 1) {
                 let block = $(e.target).parent().text();
                 this.showMessage("Heeeey! " + block + " can't be less than a minute!");
-                $(e.target).trigger("focus");
+                $(e.target).attr("value", 1);
             } else {
                 $(e.target).attr("value", $(e.target).val());
             }
