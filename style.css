@@ -153,3 +153,7 @@ footer {
     margin-top: 5vh;
     bottom: 0;
 }
+.logo {
+    height: 80px;
+    margin-top: -30px;
+}
