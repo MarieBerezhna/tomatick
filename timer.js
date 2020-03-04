@@ -20,10 +20,8 @@ class Timer {
                 let inputId = id.replace("_", "");
                 let timeVal = parseInt($("#" + inputId).val()); 
                 timeVal = timeVal !== 1? timeVal - 1 : "0";
-                // timeBox.setClock(timeVal, 59);
-
                 timeBox.setMode(id);
-                timeBox.setClock(timeVal, 3); //test
+                timeBox.setClock(timeVal, 59);
                 this.timerGo();
             };
 
