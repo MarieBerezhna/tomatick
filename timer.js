@@ -21,8 +21,12 @@ class Timer {
                 let timeVal = parseInt($("#" + inputId).val()); 
                 timeVal = timeVal !== 1? timeVal - 1 : "0";
                 timeBox.setMode(id);
-                timeBox.setClock(timeVal, 59);
-                this.timerGo();
+                if (timeVal < 1) {
+                    this.showMessage("Something is wrong. Please check the duration settings");
+                } else {
+                    timeBox.setClock(timeVal, 59);
+                    this.timerGo();
+                }
             };
 
            if (id !== "stop") {
@@ -68,6 +72,7 @@ class Timer {
             if ($(e.target).val() < 1) {
                 let block = $(e.target).parent().text();
                 this.showMessage("Heeeey! " + block + " can't be less than a minute!");
+                $(e.target).trigger("focus");
             } else {
                 $(e.target).attr("value", $(e.target).val());
             }
