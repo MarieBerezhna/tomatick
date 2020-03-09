@@ -106,6 +106,7 @@ class Timer {
         });
     }
     showMessage(message) {
+        this.clearInfo();
         $(".modal-msg").text(message);
         $("#msg-trigger").trigger("click");
     }
@@ -135,6 +136,18 @@ class Timer {
             this.timerStop();
         }
     }
+    clearInfo () {
+
+        if ($(".info-img")[0].style.display !== "none") {
+   
+            $(".tomatick-img").show();
+            $(".info-img").hide();
+            $(".modal-dialog").css({
+                marginTop: "10rem",
+                maxWidth: "500px"
+            });
+       }
+    }
     showInfo () {
         $(".info-trigger").on("click", ()=> {
    
@@ -146,14 +159,10 @@ class Timer {
                 maxWidth: "1000px"
             }, 800);
 
-            $(".modal-backdrop, #modal-close").on("click", ()=> {
-                $(".tomatick-img").show();
-                $(".info-img").hide();
-                $(".modal-dialog").css({
-                    marginTop: "10rem",
-                    maxWidth: "500px"
-                });
-            });
+
+        });
+        $(".modal-backdrop, #modal-close").on("click", ()=> {
+            this.clearInfo();
         });
     }
     init () {
