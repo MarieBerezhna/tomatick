@@ -28,8 +28,7 @@ class Timer {
 
                     this.showMessage("Proceeding to Short Break is set, but its duration is wrong. Please check the settings.");
                 } else {
-                    // timeBox.setClock(timeVal - 1, 59);
-                    timeBox.setClock(timeVal - 1, 3);
+                    timeBox.setClock(timeVal - 1, 59);
                     this.timerGo();
                 }
             };
