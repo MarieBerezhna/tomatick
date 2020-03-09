@@ -28,7 +28,8 @@ class Timer {
 
                     this.showMessage("Proceeding to Short Break is set, but its duration is wrong. Please check the settings.");
                 } else {
-                    timeBox.setClock(timeVal - 1, 59);
+                    // timeBox.setClock(timeVal - 1, 59);
+                    timeBox.setClock(timeVal - 1, 3);
                     this.timerGo();
                 }
             };
@@ -130,6 +131,8 @@ class Timer {
             setTimeout(()=> {
                 $("#modal-close").trigger("click");
             }, 10000);
+        } else {
+            this.timerStop();
         }
     }
     showInfo () {
@@ -163,8 +166,25 @@ const timeBox = {
     mode: "unset",
     opts: [],
     setMode: (mode) => {
-        console.log(mode);
         this.mode = mode;
+        let color;
+        switch (mode) {
+            case "time_block":
+                color = "#1e7e34"; //green
+            break;
+            case "short_break":
+                color = "#0062cc"; //blue
+            break;
+            case "long_break":
+                color = "#d39e00"; //yellow
+            break;
+            default:
+                color = "grey";
+            break;
+        }
+        $(".time-box").css({
+            color: color
+        });
     },
     getMode: () => {
 
@@ -182,8 +202,8 @@ const timeBox = {
 
     setClock: (min, sec) => {
 
-        min = min? (min < 10? "0" + min : min) : "00";
-        sec = sec? (sec < 10? "0" + sec : sec) : "00";
+        min = min? (min < 10? "0" + min : min) : (min === 0 ? "00" : $("#min").text());
+        sec = sec? (sec < 10? "0" + sec : sec) : (sec === 0 ? "00" :  $("#sec").text());
         $("#min").text(min);
         $("#sec").text(sec);
     }
