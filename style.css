@@ -1,3 +1,11 @@
+/*
+bt red #bd2130
+bt yellow #d39e00
+bt blue #0062cc
+bt green #1e7e34
+*/
+
+
 @import url('https://fonts.googleapis.com/css?family=Simonetta&display=swap');
 * {
     font-family: "Simonetta";
@@ -83,6 +91,7 @@ body::before {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    color: #bd2130;
 }
 .time-box span {
     width: 50%;

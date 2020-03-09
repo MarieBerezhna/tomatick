@@ -19,7 +19,8 @@ class Timer {
 
             let timerStart = () => {
                 let inputId = id.replace("_", "");
-                let timeVal = parseInt($("#" + inputId).val()); 
+                let timeVal = parseInt($("#" + inputId).val());
+
                 timeBox.setMode(id);
                 if (timeVal < 1 ) {
                     this.showMessage("The duration value of the " + name + " is wrong. Please check the settings");
@@ -180,8 +181,9 @@ const timeBox = {
     },
 
     setClock: (min, sec) => {
-        min = min? (min < 10? "0" + min : min) : $("#min").text();
-        sec = sec? (sec < 10? "0" + sec : sec) : $("#sec").text();
+
+        min = min? (min < 10? "0" + min : min) : "00";
+        sec = sec? (sec < 10? "0" + sec : sec) : "00";
         $("#min").text(min);
         $("#sec").text(sec);
     }
